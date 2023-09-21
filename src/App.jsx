@@ -3,6 +3,7 @@ import css from './styles/app.module.scss'
 import Hero from "./components/hero/hero";
 import Expertise from "./components/expertise/expertise"
 import Works from "./components/works/Works";
+import Portfolio from "./components/portfolio/Portfolio";
 
 const App = () => {
   return <div className={`bg-primary ${css.container}`}>
@@ -10,6 +11,7 @@ const App = () => {
     <Hero />
     <Expertise />
     <Works />
+    <Portfolio />
   </div>
 };
 
