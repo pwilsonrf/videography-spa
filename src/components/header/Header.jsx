@@ -1,16 +1,20 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import css from './Header.module.scss'
 import {BiPhoneCall} from 'react-icons/bi'
 import { BiMenuAltRight } from 'react-icons/bi'
 import { getMenuStyles, headerVariants } from '../../utils/motion'
 import {motion} from 'framer-motion'
 import useHeaderShadow from '../../hooks/useHeaderShadow'
+import useOutsideAlerter from '../../hooks/useOutsideAlerter'
 
 const Header = () => {
 
     const [menuOpened, setMenuOpened] = useState(false);
-    const headerShadow = useHeaderShadow()
+    const headerShadow = useHeaderShadow();
+    const menuRef = useRef();
+
+    useOutsideAlerter({menuRef, setMenuOpened})
         return (
             <motion.div
             initial = "hidden"
@@ -24,13 +28,13 @@ const Header = () => {
                         Binjan
                     </div>
 
-                    <ul 
+                    <ul ref={menuRef}
                     style = {getMenuStyles(menuOpened)}
                     className={`flexCenter ${css.menu}`}>
-                        <li><a href="">Services</a></li>
-                        <li><a href="">Experience</a></li>
-                        <li><a href="">Portfolio</a></li>
-                        <li><a href="">Testimonials</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#experience">Experience</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
                         <li className = {`flexCenter ${css.phone}`}>
                             <p>+123 456 789</p>
                             <BiPhoneCall size = {"40px"}/>
